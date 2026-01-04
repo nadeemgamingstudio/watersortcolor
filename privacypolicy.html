@@ -1,0 +1,1666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Privacy Policy | Water Sort Color Puzzle Game - Nadeem Gaming Studio</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="https://raw.githubusercontent.com/nadeemgamingstudio/watersortcolor/refs/heads/main/icon.png" type="image/x-icon"/>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Custom Tailwind Configuration for Water Theme -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-bg': '#0A0A0A',
+                        'secondary-bg': '#1a1a1a',
+                        'water-blue': '#00A8FF',
+                        'water-cyan': '#00D4FF',
+                        'water-teal': '#00BFA6',
+                        'water-purple': '#9D4EDD',
+                        'water-green': '#34C759',
+                        'water-yellow': '#FFC107',
+                        'water-red': '#FF4757',
+                        'water-orange': '#FF9500',
+                        'water-pink': '#FF2E93',
+                        'text-light': '#e5e5e5',
+                        'border-dark': '#333333',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        'orbitron': ['Orbitron', 'sans-serif'],
+                        'water': ['"Comic Neue"', 'cursive', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'water-blue': '0 0 15px rgba(0, 168, 255, 0.8)',
+                        'water-cyan': '0 0 15px rgba(0, 212, 255, 0.8)',
+                        'water-teal': '0 0 15px rgba(0, 191, 166, 0.8)',
+                        'water-purple': '0 0 15px rgba(157, 78, 221, 0.8)',
+                        'water-green': '0 0 15px rgba(52, 199, 89, 0.8)',
+                        'water-yellow': '0 0 15px rgba(255, 193, 7, 0.8)',
+                        'water-red': '0 0 15px rgba(255, 71, 87, 0.8)',
+                        'water-orange': '0 0 15px rgba(255, 149, 0, 0.8)',
+                        'water-pink': '0 0 15px rgba(255, 46, 147, 0.8)',
+                        'glow-water': '0 0 30px rgba(0, 168, 255, 0.5)',
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'bubble': 'bubble 8s ease infinite',
+                        'wave': 'wave 10s linear infinite',
+                        'spin-slow': 'spin 8s linear infinite',
+                        'bounce-slow': 'bounce 2s infinite',
+                        'drop-fall': 'dropFall 4s linear infinite',
+                        'water-flow': 'waterFlow 12s linear infinite',
+                        'color-change': 'colorChange 15s linear infinite',
+                    },
+                    backgroundImage: {
+                        'gradient-water': 'linear-gradient(135deg, #00A8FF 0%, #00D4FF 50%, #00BFA6 100%)',
+                        'gradient-dark': 'linear-gradient(180deg, #071026 0%, #08102a 55%, #05111f 100%)',
+                        'gradient-colors': 'linear-gradient(135deg, #00A8FF 0%, #9D4EDD 33%, #34C759 66%, #FF9500 100%)',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Custom Styles -->
+    <style>
+        /* Import Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Orbitron:wght@400;700;900&family=Comic+Neue:wght@400;700&display=swap');
+        
+        /* Global Styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a;
+            overflow-x: hidden;
+            color: #e5e5e5;
+        }
+        
+        /* Animated Top Bar */
+        .top-animated-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, 
+                #00A8FF, #00D4FF, #00BFA6, #9D4EDD,
+                #34C759, #FFC107, #FF4757, #FF9500,
+                #00A8FF);
+            background-size: 800% 100%;
+            animation: colorSlide 10s linear infinite;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        /* Animated Side Bars */
+        .side-animated-bar {
+            position: fixed;
+            top: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(180deg, 
+                #00A8FF, #00D4FF, #00BFA6, #9D4EDD,
+                #34C759, #FFC107, #FF4757, #FF9500,
+                #00A8FF);
+            background-size: 100% 800%;
+            animation: colorSlideVertical 15s linear infinite;
+            z-index: 99;
+        }
+        
+        .left-bar {
+            left: 0;
+        }
+        
+        .right-bar {
+            right: 0;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 12px;
+            background: #111;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+            border-radius: 10px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #00A8FF, #00D4FF);
+            border-radius: 10px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, #00D4FF, #00A8FF);
+        }
+        
+        /* Animations */
+        @keyframes colorSlide {
+            0% {
+                background-position: 0% 0%;
+            }
+            100% {
+                background-position: 800% 0%;
+            }
+        }
+        
+        @keyframes colorSlideVertical {
+            0% {
+                background-position: 0% 0%;
+            }
+            100% {
+                background-position: 0% 800%;
+            }
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+        
+        @keyframes bubble {
+            0% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+        }
+        
+        @keyframes wave {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        
+        @keyframes dropFall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes waterFlow {
+            0% {
+                background-position: 0% 0%;
+            }
+            100% {
+                background-position: 100% 100%;
+            }
+        }
+        
+        @keyframes colorChange {
+            0% { background-color: #00A8FF; }
+            25% { background-color: #9D4EDD; }
+            50% { background-color: #34C759; }
+            75% { background-color: #FF9500; }
+            100% { background-color: #00A8FF; }
+        }
+        
+        /* Bubble Background */
+        .bubbles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.3), transparent);
+            animation: float 15s infinite ease-in-out;
+        }
+        
+        /* Water Droplet Effect */
+        .water-droplets {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        
+        .droplet {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle at 30% 30%, currentColor, transparent);
+            border-radius: 50% 50% 50% 0;
+            transform: rotate(-45deg);
+            animation: dropFall linear infinite;
+        }
+        
+        /* Glowing Text Effect */
+        .glow-text {
+            text-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor;
+        }
+        
+        /* Scroll to Top Button */
+        .scroll-top-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #00A8FF, #00D4FF);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 99;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            box-shadow: 0 0 20px rgba(0, 168, 255, 0.7);
+        }
+        
+        .scroll-top-btn.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .scroll-top-btn:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 30px rgba(0, 168, 255, 0.9);
+        }
+        
+        /* Typewriter Effect */
+        .typewriter {
+            overflow: hidden;
+            border-right: .15em solid #00A8FF;
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: .15em;
+            animation: 
+                typing 3.5s steps(40, end),
+                blink-caret .75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #00A8FF; }
+        }
+        
+        /* Card Hover Effects */
+        .policy-card {
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .policy-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Gradient Background */
+        .gradient-bg {
+            background: linear-gradient(135deg, rgba(0, 168, 255, 0.1) 0%, rgba(0, 212, 255, 0.1) 50%, rgba(0, 191, 166, 0.1) 100%);
+        }
+        
+        /* Animated Border */
+        .animated-border {
+            position: relative;
+            border: 2px solid transparent;
+            background-clip: padding-box;
+        }
+        
+        .animated-border::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #00A8FF, #00D4FF, #00BFA6, #9D4EDD);
+            z-index: -1;
+            border-radius: inherit;
+            animation: wave 4s linear infinite;
+            background-size: 400% 400%;
+        }
+        
+        /* Section Counter */
+        .section-counter {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        /* Water Color Animations */
+        .water-color {
+            position: absolute;
+            font-size: 24px;
+            font-weight: bold;
+            z-index: 1;
+            animation: float 10s ease-in-out infinite;
+            animation-delay: calc(var(--delay) * 1s);
+        }
+        
+        /* Water Tube Design */
+        .water-tube {
+            width: 40px;
+            height: 120px;
+            border: 3px solid currentColor;
+            border-radius: 0 0 20px 20px;
+            position: relative;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+        
+        .water-level {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background: currentColor;
+            opacity: 0.7;
+            animation: bubble 2s infinite ease-in-out;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .side-animated-bar {
+                display: none;
+            }
+            .scroll-top-btn {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
+            }
+            .section-counter {
+                width: 35px;
+                height: 35px;
+                margin-right: 10px;
+            }
+            .water-color {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body class="bg-primary-bg text-text-light min-h-screen antialiased">
+    
+    <!-- Animated Color Bars -->
+    <div class="top-animated-bar"></div>
+    <div class="side-animated-bar left-bar"></div>
+    <div class="side-animated-bar right-bar"></div>
+    
+    <!-- Bubble Background -->
+    <div class="bubbles" id="bubbles"></div>
+    
+    <!-- Water Droplets Background -->
+    <div class="water-droplets" id="waterDroplets"></div>
+    
+    <!-- Scroll to Top Button -->
+    <div class="scroll-top-btn" id="scrollTopBtn">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Header / Navigation Bar -->
+    <header class="sticky top-0 z-50 bg-secondary-bg/90 backdrop-blur-md shadow-2xl shadow-black/70 border-b-2 border-water-blue">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <!-- Logo/Title -->
+            <div class="flex items-center space-x-3" data-aos="fade-right" data-aos-duration="1000">
+                <div class="relative">
+                    <a href="#">
+                        <div class="h-10 w-10 rounded-xl border-2 border-water-cyan p-0.5 bg-gradient-water flex items-center justify-center">
+                            <i class="fas fa-tint text-white text-lg"></i>
+                        </div>
+                    </a>
+                    <div class="absolute -top-1 -right-1 h-4 w-4 bg-water-purple rounded-full animate-pulse"></div>
+                </div>
+                <div>
+                    <span class="text-2xl font-black tracking-wider text-white font-water">
+                        <span class="bg-gradient-to-r from-water-blue to-water-cyan bg-clip-text text-transparent">WATER</span> 
+                        <span class="text-water-green">SORT</span> 
+                        <span class="bg-gradient-to-r from-water-purple to-water-yellow bg-clip-text text-transparent">COLOR PUZZLE</span>
+                    </span>
+                    <div class="text-xs text-water-cyan font-bold tracking-widest uppercase mt-0.5">
+                        <i class="fas fa-gamepad mr-1"></i> PUZZLE GAME • PRIVACY POLICY
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Navigation Links -->
+            <div class="space-x-4 flex items-center" data-aos="fade-left" data-aos-duration="1000">
+                <a href="#" 
+                   class="relative group px-5 py-2.5 rounded-xl font-bold transition-all duration-300 overflow-hidden">
+                    <span class="relative z-10 text-white flex items-center">
+                        <i class="fas fa-home mr-2"></i> HOME
+                    </span>
+                    <div class="absolute inset-0 bg-gradient-to-r from-water-blue to-water-cyan opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div class="absolute inset-0 border-2 border-water-blue rounded-xl"></div>
+                </a>
+                
+                <a href="mailto:nadeemgamer180@gmail.com" 
+                   class="relative group px-5 py-2.5 rounded-xl font-bold transition-all duration-300 overflow-hidden">
+                    <span class="relative z-10 text-white flex items-center">
+                        <i class="fas fa-phone-alt mr-2"></i> CONTACT
+                    </span>
+                    <div class="absolute inset-0 bg-gradient-to-r from-water-cyan to-water-purple opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div class="absolute inset-0 border-2 border-water-cyan rounded-xl"></div>
+                </a>
+                
+                <!-- Active Privacy Policy Link -->
+                <a href="#" 
+                   class="relative group px-5 py-2.5 rounded-xl font-bold transition-all duration-300 overflow-hidden">
+                    <span class="relative z-10 text-white flex items-center">
+                        <i class="fas fa-shield-alt mr-2"></i> PRIVACY
+                    </span>
+                    <div class="absolute inset-0 bg-gradient-to-r from-water-green to-water-purple opacity-100 transition-opacity duration-300"></div>
+                    <div class="absolute inset-0 border-2 border-water-green rounded-xl"></div>
+                </a>
+                
+                <!-- Terms & Conditions Link -->
+                <a href="#" 
+                   class="relative group px-5 py-2.5 rounded-xl font-bold transition-all duration-300 overflow-hidden">
+                    <span class="relative z-10 text-white flex items-center">
+                        <i class="fas fa-file-contract mr-2"></i> TERMS
+                    </span>
+                    <div class="absolute inset-0 bg-gradient-to-r from-water-purple to-water-yellow opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div class="absolute inset-0 border-2 border-water-purple rounded-xl"></div>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-20">
+        
+        <!-- Hero Section for Privacy Policy -->
+        <section class="text-center mb-16" data-aos="fade-up" data-aos-duration="1200">
+            <div class="bg-gradient-dark p-10 rounded-3xl shadow-2xl border border-gray-800 relative overflow-hidden">
+                <!-- Water Color Animation -->
+                <div class="water-color" style="--delay: 0; top: 20%; left: 10%; color: #00A8FF;">
+                    <div class="water-tube">
+                        <div class="water-level" style="height: 70%;"></div>
+                    </div>
+                </div>
+                <div class="water-color" style="--delay: 2; top: 40%; left: 20%; color: #9D4EDD;">
+                    <div class="water-tube">
+                        <div class="water-level" style="height: 50%;"></div>
+                    </div>
+                </div>
+                <div class="water-color" style="--delay: 4; top: 60%; left: 15%; color: #34C759;">
+                    <div class="water-tube">
+                        <div class="water-level" style="height: 90%;"></div>
+                    </div>
+                </div>
+                <div class="water-color" style="--delay: 1; top: 30%; right: 10%; color: #FF9500;">
+                    <div class="water-tube">
+                        <div class="water-level" style="height: 30%;"></div>
+                    </div>
+                </div>
+                <div class="water-color" style="--delay: 3; top: 50%; right: 20%; color: #FFC107;">
+                    <div class="water-tube">
+                        <div class="water-level" style="height: 80%;"></div>
+                    </div>
+                </div>
+                <div class="water-color" style="--delay: 5; top: 70%; right: 15%; color: #FF4757;">
+                    <div class="water-tube">
+                        <div class="water-level" style="height: 40%;"></div>
+                    </div>
+                </div>
+                
+                <div class="absolute -top-20 -right-20 w-60 h-60 bg-water-blue/10 rounded-full blur-3xl"></div>
+                <div class="absolute -bottom-20 -left-20 w-60 h-60 bg-water-cyan/10 rounded-full blur-3xl"></div>
+                
+                <div class="relative z-10">
+                    <h1 class="text-4xl md:text-5xl font-black mb-6 font-orbitron">
+                        <span class="bg-gradient-to-r from-water-blue to-water-cyan bg-clip-text text-transparent">
+                            <i class="fas fa-shield-alt mr-4"></i>PRIVACY POLICY
+                        </span>
+                    </h1>
+                    
+                    <div class="typewriter text-2xl md:text-3xl font-bold text-white mb-8 max-w-3xl mx-auto">
+                        Water Sort Color Puzzle Game
+                    </div>
+                    
+                    <p class="text-xl text-gray-300 max-w-4xl mx-auto mb-10 leading-relaxed">
+                        🛡️ This page informs you about our policies regarding the collection, use, and disclosure of Personal Information when you play our Water Sort Color Puzzle Game. We are committed to protecting your privacy and being transparent about our data practices.
+                    </p>
+                    
+                    <!-- Date & Last Updated -->
+                    <div class="inline-flex items-center bg-gray-800/50 px-6 py-3 rounded-full border border-water-blue/30 mb-6">
+                        <i class="fas fa-calendar-alt text-water-blue mr-3"></i>
+                        <span class="text-gray-300">Last Updated: <span class="font-bold text-water-yellow">06 November 2025</span></span>
+                        <span class="ml-3 px-3 py-1 bg-water-purple text-white text-xs font-bold rounded-full animate-pulse-slow">UPDATED</span>
+                    </div>
+                    
+                    <!-- Quick Stats -->
+                    <div class="flex flex-wrap justify-center gap-8 mt-10">
+                        <div class="text-center p-4 bg-gray-800/50 rounded-2xl border border-gray-700">
+                            <div class="text-3xl font-bold text-water-blue mb-2">
+                                <i class="fas fa-tint"></i>
+                            </div>
+                            <div class="text-sm text-gray-300">Water Puzzle Game</div>
+                        </div>
+                        <div class="text-center p-4 bg-gray-800/50 rounded-2xl border border-gray-700">
+                            <div class="text-3xl font-bold text-water-cyan mb-2">
+                                <i class="fas fa-user-shield"></i>
+                            </div>
+                            <div class="text-sm text-gray-300">Privacy Protected</div>
+                        </div>
+                        <div class="text-center p-4 bg-gray-800/50 rounded-2xl border border-gray-700">
+                            <div class="text-3xl font-bold text-water-green mb-2">
+                                <i class="fas fa-child"></i>
+                            </div>
+                            <div class="text-sm text-gray-300">Child Safe</div>
+                        </div>
+                        <div class="text-center p-4 bg-gray-800/50 rounded-2xl border border-gray-700">
+                            <div class="text-3xl font-bold text-water-purple mb-2">
+                                <i class="fas fa-gavel"></i>
+                            </div>
+                            <div class="text-sm text-gray-300">Legal Compliance</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Main Content Grid -->
+        <div class="flex flex-col lg:flex-row gap-8">
+            <!-- Table of Contents -->
+            <aside class="lg:w-1/3" data-aos="fade-right" data-aos-duration="1000">
+                <div class="sticky top-32 bg-gradient-to-br from-gray-900 to-black p-6 rounded-3xl shadow-2xl border border-gray-800">
+                    <h2 class="text-2xl font-bold text-white mb-6 flex items-center">
+                        <i class="fas fa-list text-water-blue mr-3"></i>
+                        <span class="bg-gradient-to-r from-water-blue to-water-cyan bg-clip-text text-transparent">
+                            Table of Contents
+                        </span>
+                    </h2>
+                    
+                    <nav class="space-y-3">
+                        <a href="#overview" class="flex items-center p-3 bg-gray-800/50 rounded-xl border border-gray-700 hover:border-water-blue transition duration-300 group">
+                            <div class="w-8 h-8 rounded-full bg-water-blue/20 flex items-center justify-center text-water-blue mr-3">
+                                <i class="fas fa-eye"></i>
+                            </div>
+                            <span class="text-gray-300 group-hover:text-white">Overview & Agreement</span>
+                        </a>
+                        
+                        <a href="#information-collection" class="flex items-center p-3 bg-gray-800/50 rounded-xl border border-gray-700 hover:border-water-cyan transition duration-300 group">
+                            <div class="w-8 h-8 rounded-full bg-water-cyan/20 flex items-center justify-center text-water-cyan mr-3">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <span class="text-gray-300 group-hover:text-white">Information We Collect</span>
+                        </a>
+                        
+                        <a href="#third-party" class="flex items-center p-3 bg-gray-800/50 rounded-xl border border-gray-700 hover:border-water-purple transition duration-300 group">
+                            <div class="w-8 h-8 rounded-full bg-water-purple/20 flex items-center justify-center text-water-purple mr-3">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <span class="text-gray-300 group-hover:text-white">Third-Party Services</span>
+                        </a>
+                        
+                        <a href="#advertising" class="flex items-center p-3 bg-gray-800/50 rounded-xl border border-gray-700 hover:border-water-orange transition duration-300 group">
+                            <div class="w-8 h-8 rounded-full bg-water-orange/20 flex items-center justify-center text-water-orange mr-3">
+                                <i class="fas fa-ad"></i>
+                            </div>
+                            <span class="text-gray-300 group-hover:text-white">Advertising</span>
+                        </a>
+                        
+                        <a href="#inapp-purchase" class="flex items-center p-3 bg-gray-800/50 rounded-xl border border-gray-700 hover:border-water-green transition duration-300 group">
+                            <div class="w-8 h-8 rounded-full bg-water-green/20 flex items-center justify-center text-water-green mr-3">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                            <span class="text-gray-300 group-hover:text-white">In-App Purchase</span>
+                        </a>
+                        
+                        <a href="#children-privacy" class="flex items-center p-3 bg-gray-800/50 rounded-xl border border-gray-700 hover:border-water-pink transition duration-300 group">
+                            <div class="w-8 h-8 rounded-full bg-water-pink/20 flex items-center justify-center text-water-pink mr-3">
+                                <i class="fas fa-child"></i>
+                            </div>
+                            <span class="text-gray-300 group-hover:text-white">Children's Privacy</span>
+                        </a>
+                        
+                        <a href="#security" class="flex items-center p-3 bg-gray-800/50 rounded-xl border border-gray-700 hover:border-water-teal transition duration-300 group">
+                            <div class="w-8 h-8 rounded-full bg-water-teal/20 flex items-center justify-center text-water-teal mr-3">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <span class="text-gray-300 group-hover:text-white">Security</span>
+                        </a>
+                        
+                        <a href="#policy-changes" class="flex items-center p-3 bg-gray-800/50 rounded-xl border border-gray-700 hover:border-water-red transition duration-300 group">
+                            <div class="w-8 h-8 rounded-full bg-water-red/20 flex items-center justify-center text-water-red mr-3">
+                                <i class="fas fa-sync-alt"></i>
+                            </div>
+                            <span class="text-gray-300 group-hover:text-white">Policy Changes</span>
+                        </a>
+                        
+                        <a href="#contact" class="flex items-center p-3 bg-gray-800/50 rounded-xl border border-gray-700 hover:border-water-blue transition duration-300 group">
+                            <div class="w-8 h-8 rounded-full bg-water-blue/20 flex items-center justify-center text-water-blue mr-3">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <span class="text-gray-300 group-hover:text-white">Contact Us</span>
+                        </a>
+                    </nav>
+                    
+                    <div class="mt-8 pt-6 border-t border-gray-800">
+                        <h3 class="text-lg font-bold text-white mb-3 flex items-center">
+                            <i class="fas fa-lightbulb text-water-yellow mr-2"></i>
+                            Quick Privacy Facts
+                        </h3>
+                        <ul class="text-sm text-gray-400 space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-water-green mr-2 mt-1"></i>
+                                <span>No personal data collected by us</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-water-green mr-2 mt-1"></i>
+                                <span>Third-party services may collect data</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-water-green mr-2 mt-1"></i>
+                                <span>COPPA compliant (13+ age restriction)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-water-green mr-2 mt-1"></i>
+                                <span>Ad personalization can be disabled</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </aside>
+            
+            <!-- Privacy Policy Content -->
+            <div class="lg:w-2/3 space-y-8">
+                <!-- Section 1: Overview & Agreement -->
+                <section id="overview" class="policy-card bg-gradient-to-br from-gray-900 to-black p-8 rounded-3xl shadow-2xl border border-gray-800" data-aos="fade-up">
+                    <div class="flex items-center mb-6">
+                        <div class="section-counter bg-gradient-to-r from-water-blue to-water-cyan text-white">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h2 class="text-3xl font-bold text-white">
+                            <span class="bg-gradient-to-r from-water-blue to-water-cyan bg-clip-text text-transparent">
+                                Overview & Agreement
+                            </span>
+                        </h2>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <p class="text-gray-300 leading-relaxed">
+                            <strong class="text-white">Nadeem Gaming Studio</strong> built the <strong class="text-water-blue">Water Sort Color Puzzle Game</strong> as a Free mobile game. This SERVICE is provided by <strong class="text-white">Nadeem Gaming Studio</strong> at no cost and is intended for use as is.
+                        </p>
+                        
+                        <div class="p-6 bg-gray-800/50 rounded-2xl border-l-4 border-water-blue">
+                            <h4 class="text-lg font-bold text-white mb-3 flex items-center">
+                                <i class="fas fa-info-circle text-water-blue mr-3"></i>
+                                Purpose of This Policy
+                            </h4>
+                            <p class="text-gray-300">
+                                This page is used to inform users regarding our policies with the collection, use, and disclosure of Personal Information if anyone decided to play our game.
+                            </p>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+                            <div class="p-6 bg-gray-800/50 rounded-2xl border-l-4 border-water-blue">
+                                <div class="flex items-center mb-4">
+                                    <div class="w-12 h-12 rounded-full bg-water-blue/20 flex items-center justify-center text-water-blue mr-4">
+                                        <i class="fas fa-user-check"></i>
+                                    </div>
+                                    <h3 class="text-xl font-bold text-white">Free-to-Play Game</h3>
+                                </div>
+                                <p class="text-gray-300">Water Sort Color Puzzle Game is completely free to play with optional ads and in-app purchases for enhanced experience.</p>
+                            </div>
+                            
+                            <div class="p-6 bg-gray-800/50 rounded-2xl border-l-4 border-water-cyan">
+                                <div class="flex items-center mb-4">
+                                    <div class="w-12 h-12 rounded-full bg-water-cyan/20 flex items-center justify-center text-water-cyan mr-4">
+                                        <i class="fas fa-puzzle-piece"></i>
+                                    </div>
+                                    <h3 class="text-xl font-bold text-white">Puzzle Game Nature</h3>
+                                </div>
+                                <p class="text-gray-300">A relaxing color sorting puzzle game where you sort colored water in tubes until all colors are separated.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Section 2: Information We Collect -->
+                <section id="information-collection" class="policy-card bg-gradient-to-br from-gray-900 to-black p-8 rounded-3xl shadow-2xl border border-gray-800" data-aos="fade-up">
+                    <div class="flex items-center mb-6">
+                        <div class="section-counter bg-gradient-to-r from-water-cyan to-water-teal text-white">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h2 class="text-3xl font-bold text-white">
+                            <span class="bg-gradient-to-r from-water-cyan to-water-teal bg-clip-text text-transparent">
+                                Information We Collect
+                            </span>
+                        </h2>
+                    </div>
+                    
+                    <div class="space-y-8">
+                        <div class="p-6 bg-gray-800/50 rounded-2xl">
+                            <h3 class="text-xl font-bold text-white mb-4 flex items-center">
+                                <i class="fas fa-user-circle text-water-cyan mr-3"></i>
+                                A. Direct Data Collection
+                            </h3>
+                            <p class="text-gray-300 leading-relaxed">
+                                Our game itself does not collect personal data directly. All game progress and data is stored locally on your device and is not transmitted to our servers.
+                            </p>
+                        </div>
+                        
+                        <div class="p-6 bg-gray-800/50 rounded-2xl">
+                            <h3 class="text-xl font-bold text-white mb-4 flex items-center">
+                                <i class="fas fa-external-link-alt text-water-purple mr-3"></i>
+                                B. Third-Party Data Collection
+                            </h3>
+                            <p class="text-gray-300 leading-relaxed mb-4">
+                                However, third-party services used in our App may collect information for:
+                            </p>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="flex items-center p-4 bg-gray-800/30 rounded-xl">
+                                    <i class="fas fa-ad text-water-orange mr-3"></i>
+                                    <span class="text-gray-300">Ads personalization</span>
+                                </div>
+                                <div class="flex items-center p-4 bg-gray-800/30 rounded-xl">
+                                    <i class="fas fa-chart-line text-water-green mr-3"></i>
+                                    <span class="text-gray-300">Analytics and app performance</span>
+                                </div>
+                                <div class="flex items-center p-4 bg-gray-800/30 rounded-xl">
+                                    <i class="fas fa-shield-alt text-water-red mr-3"></i>
+                                    <span class="text-gray-300">Fraud and abuse prevention</span>
+                                </div>
+                                <div class="flex items-center p-4 bg-gray-800/30 rounded-xl">
+                                    <i class="fas fa-shopping-cart text-water-purple mr-3"></i>
+                                    <span class="text-gray-300">In-App purchase validation</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="p-6 bg-gray-800/50 rounded-2xl">
+                            <h3 class="text-xl font-bold text-white mb-4 flex items-center">
+                                <i class="fas fa-server text-water-teal mr-3"></i>
+                                C. Collected Data May Include
+                            </h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="flex items-center p-4 bg-gray-800/30 rounded-xl">
+                                    <i class="fas fa-mobile-alt text-water-blue mr-3"></i>
+                                    <span class="text-gray-300">Device Information</span>
+                                </div>
+                                <div class="flex items-center p-4 bg-gray-800/30 rounded-xl">
+                                    <i class="fas fa-network-wired text-water-cyan mr-3"></i>
+                                    <span class="text-gray-300">IP Address</span>
+                                </div>
+                                <div class="flex items-center p-4 bg-gray-800/30 rounded-xl">
+                                    <i class="fas fa-id-badge text-water-orange mr-3"></i>
+                                    <span class="text-gray-300">Advertising ID</span>
+                                </div>
+                                <div class="flex items-center p-4 bg-gray-800/30 rounded-xl">
+                                    <i class="fas fa-gamepad text-water-green mr-3"></i>
+                                    <span class="text-gray-300">Gameplay activity</span>
+                                </div>
+                                <div class="flex items-center p-4 bg-gray-800/30 rounded-xl">
+                                    <i class="fas fa-hand-pointer text-water-purple mr-3"></i>
+                                    <span class="text-gray-300">App interactions</span>
+                                </div>
+                                <div class="flex items-center p-4 bg-gray-800/30 rounded-xl">
+                                    <i class="fas fa-map-marker-alt text-water-red mr-3"></i>
+                                    <span class="text-gray-300">Approximate Location</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="p-6 bg-water-green/10 rounded-2xl border border-water-green/30">
+                            <h4 class="text-lg font-bold text-white mb-3 flex items-center">
+                                <i class="fas fa-check-circle text-water-green mr-3"></i>
+                                Important Privacy Point
+                            </h4>
+                            <p class="text-gray-300">
+                                <strong class="text-white">Important:</strong> No data collected identifies you personally. All collected data is anonymized and used only for the purposes mentioned above.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Section 3: Third-Party Services -->
+                <section id="third-party" class="policy-card bg-gradient-to-br from-gray-900 to-black p-8 rounded-3xl shadow-2xl border border-gray-800" data-aos="fade-up">
+                    <div class="flex items-center mb-6">
+                        <div class="section-counter bg-gradient-to-r from-water-purple to-water-pink text-white">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h2 class="text-3xl font-bold text-white">
+                            <span class="bg-gradient-to-r from-water-purple to-water-pink bg-clip-text text-transparent">
+                                Third-Party Services We Use
+                            </span>
+                        </h2>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <p class="text-gray-300 leading-relaxed">
+                            The game uses the following third-party SDKs for various functionalities:
+                        </p>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-start p-4 bg-gray-800/50 rounded-xl">
+                                <div class="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-500 mr-3 flex-shrink-0">
+                                    <i class="fas fa-unity"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white mb-1">Unity Ads & Analytics</h4>
+                                    <p class="text-gray-300 text-sm mb-2">For serving ads and analyzing game performance</p>
+                                    <a href="https://unity3d.com/legal/privacy-policy" target="_blank" class="text-water-cyan hover:underline text-sm">View Privacy Policy</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start p-4 bg-gray-800/50 rounded-xl">
+                                <div class="w-10 h-10 rounded-full bg-orange-500/20 flex items-center justify-center text-orange-500 mr-3 flex-shrink-0">
+                                    <i class="fas fa-sitemap"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white mb-1">IronSource Mediation</h4>
+                                    <p class="text-gray-300 text-sm mb-2">For ad mediation and optimization</p>
+                                    <a href="https://developers.is.com/ironsource-mobile/air/ironsource-privacy-policy/" target="_blank" class="text-water-cyan hover:underline text-sm">View Privacy Policy</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start p-4 bg-gray-800/50 rounded-xl">
+                                <div class="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center text-green-500 mr-3 flex-shrink-0">
+                                    <i class="fab fa-google"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white mb-1">Google AdMob</h4>
+                                    <p class="text-gray-300 text-sm mb-2">For displaying advertisements (through mediation if enabled)</p>
+                                    <a href="https://policies.google.com/privacy" target="_blank" class="text-water-cyan hover:underline text-sm">View Privacy Policy</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start p-4 bg-gray-800/50 rounded-xl">
+                                <div class="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-500 mr-3 flex-shrink-0">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white mb-1">In-App Purchases (Unity IAP)</h4>
+                                    <p class="text-gray-300 text-sm mb-2">For processing ad removal and other purchases</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="p-6 bg-gray-800/50 rounded-2xl border border-water-purple/30">
+                            <h4 class="text-lg font-bold text-white mb-3 flex items-center">
+                                <i class="fas fa-link text-water-purple mr-3"></i>
+                                External Links
+                            </h4>
+                            <p class="text-gray-300">
+                                Links to their privacy policies:
+                            </p>
+                            <ul class="mt-2 space-y-2">
+                                <li class="flex items-center">
+                                    <i class="fas fa-external-link-alt text-water-cyan mr-2 text-sm"></i>
+                                    <a href="https://policies.google.com/privacy" target="_blank" class="text-water-cyan hover:underline">Google Play Services</a>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-external-link-alt text-water-cyan mr-2 text-sm"></i>
+                                    <a href="https://unity3d.com/legal/privacy-policy" target="_blank" class="text-water-cyan hover:underline">Unity Privacy Policy</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Section 4: Advertising -->
+                <section id="advertising" class="policy-card bg-gradient-to-br from-gray-900 to-black p-8 rounded-3xl shadow-2xl border border-gray-800" data-aos="fade-up">
+                    <div class="flex items-center mb-6">
+                        <div class="section-counter bg-gradient-to-r from-water-orange to-water-yellow text-white">
+                            <i class="fas fa-ad"></i>
+                        </div>
+                        <h2 class="text-3xl font-bold text-white">
+                            <span class="bg-gradient-to-r from-water-orange to-water-yellow bg-clip-text text-transparent">
+                                Advertising
+                            </span>
+                        </h2>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <p class="text-gray-300 leading-relaxed">
+                            Our free-to-play game is supported by advertisements to keep the game available at no cost.
+                        </p>
+                        
+                        <div class="p-6 bg-gray-800/50 rounded-2xl">
+                            <h3 class="text-xl font-bold text-white mb-4 flex items-center">
+                                <i class="fas fa-ad text-water-orange mr-3"></i>
+                                Types of Ads Displayed
+                            </h3>
+                            <div class="grid md:grid-cols-3 gap-4">
+                                <div class="text-center p-4 bg-gray-800/30 rounded-xl">
+                                    <div class="text-2xl mb-2 text-water-orange">
+                                        <i class="fas fa-rectangle-ad"></i>
+                                    </div>
+                                    <div class="font-bold text-white mb-1">Banner Ads</div>
+                                    <div class="text-gray-300 text-sm">Small ads displayed during gameplay</div>
+                                </div>
+                                <div class="text-center p-4 bg-gray-800/30 rounded-xl">
+                                    <div class="text-2xl mb-2 text-water-cyan">
+                                        <i class="fas fa-pause-circle"></i>
+                                    </div>
+                                    <div class="font-bold text-white mb-1">Interstitial Ads</div>
+                                    <div class="text-gray-300 text-sm">Full-screen ads between levels</div>
+                                </div>
+                                <div class="text-center p-4 bg-gray-800/30 rounded-xl">
+                                    <div class="text-2xl mb-2 text-water-green">
+                                        <i class="fas fa-video"></i>
+                                    </div>
+                                    <div class="font-bold text-white mb-1">Rewarded Video Ads</div>
+                                    <div class="text-gray-300 text-sm">Optional ads for bonuses</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="p-6 bg-gray-800/50 rounded-2xl border-l-4 border-water-orange">
+                            <h4 class="text-lg font-bold text-white mb-3 flex items-center">
+                                <i class="fas fa-user-cog text-water-orange mr-3"></i>
+                                Ad Personalization Control
+                            </h4>
+                            <p class="text-gray-300 mb-3">
+                                Ads providers may use the collected data to show relevant ads. However, you have control over this:
+                            </p>
+                            <div class="flex items-center p-4 bg-gray-800/30 rounded-xl">
+                                <i class="fas fa-sliders-h text-water-green mr-3"></i>
+                                <span class="text-gray-300">Users can disable ad personalization from device settings</span>
+                            </div>
+                        </div>
+                        
+                        <div class="p-6 bg-water-orange/10 rounded-2xl border border-water-orange/30">
+                            <p class="text-gray-300 flex items-start">
+                                <i class="fas fa-info-circle text-water-orange mr-2 mt-1"></i>
+                                <strong>Note:</strong> Ads help us keep the game free. We try to balance ad frequency with good user experience.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Section 5: In-App Purchase -->
+                <section id="inapp-purchase" class="policy-card bg-gradient-to-br from-gray-900 to-black p-8 rounded-3xl shadow-2xl border border-gray-800" data-aos="fade-up">
+                    <div class="flex items-center mb-6">
+                        <div class="section-counter bg-gradient-to-r from-water-green to-emerald-500 text-white">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <h2 class="text-3xl font-bold text-white">
+                            <span class="bg-gradient-to-r from-water-green to-emerald-500 bg-clip-text text-transparent">
+                                In-App Purchase
+                            </span>
+                        </h2>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <div class="p-6 bg-gray-800/50 rounded-2xl">
+                            <h3 class="text-xl font-bold text-white mb-4 flex items-center">
+                                <i class="fas fa-store text-water-green mr-3"></i>
+                                Available Purchase Option
+                            </h3>
+                            <div class="flex items-center p-6 bg-gray-800/30 rounded-xl mb-4">
+                                <div class="w-16 h-16 rounded-full bg-water-green/20 flex items-center justify-center text-water-green mr-4 text-2xl">
+                                    <i class="fas fa-ban"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white text-xl mb-1">Ad Removal Purchase</h4>
+                                    <p class="text-gray-300">One-time purchase to remove all advertisements from the game</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="p-6 bg-gray-800/50 rounded-2xl border-l-4 border-water-green">
+                            <h4 class="text-lg font-bold text-white mb-3 flex items-center">
+                                <i class="fas fa-lock text-water-green mr-3"></i>
+                                Secure Payment Processing
+                            </h4>
+                            <div class="space-y-4">
+                                <div class="flex items-center">
+                                    <i class="fas fa-check-circle text-water-green mr-2"></i>
+                                    <span class="text-gray-300">Payments are processed securely through Google Play Billing</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-check-circle text-water-green mr-2"></i>
+                                    <span class="text-gray-300">We do not store or access your payment data</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-check-circle text-water-green mr-2"></i>
+                                    <span class="text-gray-300">All transactions are handled by Google Play Store</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="p-6 bg-gray-800/50 rounded-2xl">
+                            <h4 class="text-lg font-bold text-white mb-3">Purchase Benefits</h4>
+                            <ul class="space-y-3">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-water-green mr-2 mt-1"></i>
+                                    <span class="text-gray-300">Removes all banner, interstitial, and video ads</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-water-green mr-2 mt-1"></i>
+                                    <span class="text-gray-300">One-time purchase (no subscription)</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-water-green mr-2 mt-1"></i>
+                                    <span class="text-gray-300">Enhances gameplay experience</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-water-green mr-2 mt-1"></i>
+                                    <span class="text-gray-300">Supports continued game development</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Section 6: Children's Privacy -->
+                <section id="children-privacy" class="policy-card bg-gradient-to-br from-gray-900 to-black p-8 rounded-3xl shadow-2xl border border-gray-800" data-aos="fade-up">
+                    <div class="flex items-center mb-6">
+                        <div class="section-counter bg-gradient-to-r from-water-pink to-water-red text-white">
+                            <i class="fas fa-child"></i>
+                        </div>
+                        <h2 class="text-3xl font-bold text-white">
+                            <span class="bg-gradient-to-r from-water-pink to-water-red bg-clip-text text-transparent">
+                                Children's Privacy
+                            </span>
+                        </h2>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="p-6 bg-gray-800/50 rounded-2xl border border-gray-700">
+                            <div class="text-4xl mb-4 text-water-pink text-center">
+                                <i class="fas fa-child"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-3 text-center">Age Restriction</h3>
+                            <p class="text-gray-300 text-center">
+                                Our game does not target children under age 13. We comply with COPPA (Children's Online Privacy Protection Act) guidelines.
+                            </p>
+                        </div>
+                        
+                        <div class="p-6 bg-gray-800/50 rounded-2xl border border-gray-700">
+                            <div class="text-4xl mb-4 text-water-red text-center">
+                                <i class="fas fa-trash-alt"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-3 text-center">Immediate Action</h3>
+                            <p class="text-gray-300 text-center">
+                                If you believe personal data has been shared by a child, email us immediately and we will delete it from our servers.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 p-6 bg-gray-800/50 rounded-2xl">
+                        <h4 class="text-lg font-bold text-white mb-3">For Parents & Guardians</h4>
+                        <p class="text-gray-300 mb-4">
+                            We encourage parents and guardians to monitor their children's online activities. Our game is designed to be family-friendly but includes optional ads and purchases.
+                        </p>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-water-green mr-2 mt-1"></i>
+                                <span class="text-gray-300">We recommend parental supervision for children's app usage</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-water-green mr-2 mt-1"></i>
+                                <span class="text-gray-300">Use device parental controls to restrict purchases</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-water-green mr-2 mt-1"></i>
+                                <span class="text-gray-300">Contact us immediately if you suspect underage usage</span>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+                
+                <!-- Section 7: Security -->
+                <section id="security" class="policy-card bg-gradient-to-br from-gray-900 to-black p-8 rounded-3xl shadow-2xl border border-gray-800" data-aos="fade-up">
+                    <div class="flex items-center mb-6">
+                        <div class="section-counter bg-gradient-to-r from-water-teal to-cyan-500 text-white">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h2 class="text-3xl font-bold text-white">
+                            <span class="bg-gradient-to-r from-water-teal to-cyan-500 bg-clip-text text-transparent">
+                                Security
+                            </span>
+                        </h2>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <p class="text-gray-300 leading-relaxed">
+                            We value your trust in providing data indirectly through Ads/Analytics SDKs, thus we strive to use commercially acceptable means of protection. However, remember that no method of transmission over the internet, or method of electronic storage is 100% secure and reliable, and we cannot guarantee its absolute security.
+                        </p>
+                        
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <div class="flex items-center p-4 bg-gray-800/50 rounded-xl">
+                                <i class="fas fa-lock text-water-teal text-xl mr-3"></i>
+                                <span class="text-gray-300">Commercially acceptable protection methods</span>
+                            </div>
+                            <div class="flex items-center p-4 bg-gray-800/50 rounded-xl">
+                                <i class="fas fa-exclamation-triangle text-water-yellow text-xl mr-3"></i>
+                                <span class="text-gray-300">No 100% secure method exists</span>
+                            </div>
+                            <div class="flex items-center p-4 bg-gray-800/50 rounded-xl">
+                                <i class="fas fa-user-shield text-water-green text-xl mr-3"></i>
+                                <span class="text-gray-300">Best practices implemented</span>
+                            </div>
+                            <div class="flex items-center p-4 bg-gray-800/50 rounded-xl">
+                                <i class="fas fa-handshake text-water-blue text-xl mr-3"></i>
+                                <span class="text-gray-300">Trust and transparency commitment</span>
+                            </div>
+                        </div>
+                        
+                        <div class="p-6 bg-gray-800/50 rounded-2xl border border-water-yellow/30">
+                            <p class="text-gray-300 text-sm flex items-center">
+                                <i class="fas fa-lightbulb text-water-yellow mr-2"></i>
+                                <strong>Security Note:</strong> While we implement industry-standard security practices, we encourage you to also practice safe digital habits like keeping your device updated, using secure networks, and reviewing app permissions.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Section 8: Changes to Privacy Policy -->
+                <section id="policy-changes" class="policy-card bg-gradient-to-br from-gray-900 to-black p-8 rounded-3xl shadow-2xl border border-gray-800" data-aos="fade-up">
+                    <div class="flex items-center mb-6">
+                        <div class="section-counter bg-gradient-to-r from-water-red to-pink-500 text-white">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                        <h2 class="text-3xl font-bold text-white">
+                            <span class="bg-gradient-to-r from-water-red to-pink-500 bg-clip-text text-transparent">
+                                Changes to This Privacy Policy
+                            </span>
+                        </h2>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <p class="text-gray-300 leading-relaxed">
+                            We may update our Privacy Policy occasionally. Users will be informed by updating this page. You are advised to review this page periodically for any changes.
+                        </p>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-center p-4 bg-gray-800/50 rounded-xl">
+                                <i class="fas fa-bell text-water-yellow mr-3 text-xl"></i>
+                                <span class="text-gray-300">You will be notified of changes via this page</span>
+                            </div>
+                            <div class="flex items-center p-4 bg-gray-800/50 rounded-xl">
+                                <i class="fas fa-history text-water-blue mr-3 text-xl"></i>
+                                <span class="text-gray-300">Review this page periodically for updates</span>
+                            </div>
+                            <div class="flex items-center p-4 bg-gray-800/50 rounded-xl">
+                                <i class="fas fa-check-circle text-water-green mr-3 text-xl"></i>
+                                <span class="text-gray-300">Continue playing means accepting changes</span>
+                            </div>
+                        </div>
+                        
+                        <div class="p-6 bg-gray-800/50 rounded-2xl border border-water-red/30">
+                            <p class="text-gray-300 text-sm">
+                                <i class="fas fa-info-circle text-water-red mr-2"></i>
+                                <strong>Your Responsibility:</strong> We encourage you to review this Privacy Policy periodically. Your continued use of the app after changes constitutes acceptance of the updated policy.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Section 9: Contact Us -->
+                <section id="contact" class="policy-card bg-gradient-to-br from-gray-900 to-black p-8 rounded-3xl shadow-2xl border border-gray-800" data-aos="fade-up">
+                    <div class="flex items-center mb-6">
+                        <div class="section-counter bg-gradient-to-r from-water-blue to-water-purple text-white">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h2 class="text-3xl font-bold text-white">
+                            <span class="bg-gradient-to-r from-water-blue to-water-purple bg-clip-text text-transparent">
+                                Contact Us
+                            </span>
+                        </h2>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <p class="text-gray-300 leading-relaxed">
+                            If you have any questions or suggestions about our Privacy Policy, do not hesitate to contact us.
+                        </p>
+                        
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="p-6 bg-gray-800/50 rounded-2xl">
+                                <div class="flex items-center mb-4">
+                                    <i class="fas fa-building text-water-blue text-2xl mr-3"></i>
+                                    <div>
+                                        <div class="font-bold text-white">Developer</div>
+                                        <div class="text-gray-300">Nadeem Gaming Studio</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="p-6 bg-gray-800/50 rounded-2xl">
+                                <div class="flex items-center mb-4">
+                                    <i class="fas fa-envelope text-water-pink text-2xl mr-3"></i>
+                                    <div>
+                                        <div class="font-bold text-white">Email</div>
+                                        <a href="mailto:nadeemgamer180@gmail.com" class="text-water-cyan hover:underline">nadeemgamer180@gmail.com</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="p-6 bg-gray-800/50 rounded-2xl">
+                                <div class="flex items-center mb-4">
+                                    <i class="fas fa-gamepad text-water-cyan text-2xl mr-3"></i>
+                                    <div>
+                                        <div class="font-bold text-white">Game</div>
+                                        <div class="text-gray-300">Water Sort Color Puzzle Game</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="p-6 bg-gray-800/50 rounded-2xl">
+                                <div class="flex items-center mb-4">
+                                    <i class="fas fa-tint text-water-purple text-2xl mr-3"></i>
+                                    <div>
+                                        <div class="font-bold text-white">Game Type</div>
+                                        <div class="text-gray-300">Color Sorting Puzzle Game</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-6">
+                            <a href="mailto:nadeemgamer180@gmail.com" 
+                               class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-water-blue to-water-purple text-white font-bold rounded-xl hover:shadow-glow-water transition-all duration-300 transform hover:scale-105">
+                                <i class="fas fa-envelope text-xl mr-3"></i>
+                                Contact Privacy Team
+                            </a>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Policy Summary -->
+                <section class="policy-card bg-gradient-to-br from-gray-900 to-black p-8 rounded-3xl shadow-2xl border border-gray-800" data-aos="fade-up">
+                    <div class="flex items-center mb-6">
+                        <div class="section-counter bg-gradient-to-r from-water-cyan to-water-green text-white">
+                            <i class="fas fa-clipboard-check"></i>
+                        </div>
+                        <h2 class="text-3xl font-bold text-white">
+                            <span class="bg-gradient-to-r from-water-cyan to-water-green bg-clip-text text-transparent">
+                                Privacy Policy Summary
+                            </span>
+                        </h2>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start p-4 bg-gray-800/50 rounded-xl">
+                            <i class="fas fa-check-circle text-water-green mr-3 mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-white">No Direct Data Collection</h4>
+                                <p class="text-gray-300 text-sm">We don't collect personal data directly. Game data stays on your device.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start p-4 bg-gray-800/50 rounded-xl">
+                            <i class="fas fa-check-circle text-water-green mr-3 mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-white">Third-Party Services</h4>
+                                <p class="text-gray-300 text-sm">We use Unity, IronSource, and AdMob which have their own privacy policies.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start p-4 bg-gray-800/50 rounded-xl">
+                            <i class="fas fa-check-circle text-water-green mr-3 mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-white">Ad Personalization Control</h4>
+                                <p class="text-gray-300 text-sm">You can disable ad personalization in device settings.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start p-4 bg-gray-800/50 rounded-xl">
+                            <i class="fas fa-check-circle text-water-green mr-3 mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-white">Child Protection</h4>
+                                <p class="text-gray-300 text-sm">We comply with COPPA and don't target children under 13.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start p-4 bg-gray-800/50 rounded-xl">
+                            <i class="fas fa-check-circle text-water-green mr-3 mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-white">Transparent Updates</h4>
+                                <p class="text-gray-300 text-sm">We'll notify you of any policy changes on this page.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        
+        <!-- Final Call to Action -->
+        <section class="mt-16 text-center" data-aos="zoom-in" data-aos-duration="1000">
+            <div class="bg-gradient-to-r from-water-blue/10 to-water-cyan/10 p-10 rounded-3xl border-2 border-dashed border-water-blue/50">
+                <h3 class="text-3xl font-bold text-white mb-6">
+                    Ready to Sort Colors & Solve Water Puzzles?
+                </h3>
+                <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                    Test your puzzle skills, sort colored water, and enjoy a relaxing brain-teasing experience in our privacy-friendly water sort game!
+                </p>
+                
+                <div class="flex flex-col sm:flex-row justify-center gap-6">
+                    <a href="mailto:nadeemgamer180@gmail.com" 
+                       class="px-8 py-4 bg-gradient-to-r from-water-blue to-water-cyan text-white font-bold rounded-xl hover:shadow-glow-water transition-all duration-300 transform hover:scale-105">
+                        <span class="flex items-center justify-center">
+                            <i class="fas fa-question-circle text-xl mr-3"></i>
+                            Privacy Questions?
+                        </span>
+                    </a>
+                    
+                    <a href="#" 
+                       class="px-8 py-4 bg-gray-800 text-white font-bold rounded-xl border-2 border-gray-700 hover:border-water-green hover:shadow-water-green transition-all duration-300">
+                        <span class="flex items-center justify-center">
+                            <i class="fas fa-download text-xl mr-3"></i>
+                            Download Game
+                        </span>
+                    </a>
+                </div>
+                
+                <div class="mt-8 text-gray-400 text-sm">
+                    <p>
+                        <i class="fas fa-tint text-water-purple mr-2 animate-pulse"></i>
+                        Thank you for choosing Water Sort Color Puzzle Game! Have fun sorting colors and relaxing with our puzzle challenges!
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-secondary-bg border-t-2 border-water-blue/30 py-10 mt-20">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-10 mb-10">
+                <div>
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="h-12 w-12 rounded-xl border-2 border-water-cyan bg-gradient-water flex items-center justify-center">
+                            <i class="fas fa-tint text-white text-xl"></i>
+                        </div>
+                        <div>
+                            <span class="text-xl font-black tracking-wider text-white font-water">
+                                <span class="text-water-blue">WATER</span> 
+                                <span class="text-water-green">SORT</span> 
+                                <span class="text-water-cyan">COLOR PUZZLE</span>
+                            </span>
+                            <div class="text-xs text-water-purple font-bold tracking-widest uppercase mt-0.5">
+                                PUZZLE GAME
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-400">
+                        A relaxing color sorting puzzle game that challenges your brain through water tube puzzles. Sort, solve, and enjoy the satisfying experience!
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold text-white mb-6 border-l-4 border-water-blue pl-3">Game Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-water-blue transition duration-300 flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i> Home</a></li>
+                        <li><a href="mailto:nadeemgamer180@gmail.com" class="text-gray-400 hover:text-water-yellow transition duration-300 flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i> Contact Developer</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-water-green transition duration-300 flex items-center text-water-green font-bold"><i class="fas fa-chevron-right text-xs mr-2 text-water-green"></i> Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-water-cyan transition duration-300 flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i> Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold text-white mb-6 border-l-4 border-water-cyan pl-3">Legal Documents</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-water-green transition duration-300 flex items-center"><i class="fas fa-shield-alt text-xs mr-2"></i> Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-water-blue transition duration-300 flex items-center"><i class="fas fa-file-contract text-xs mr-2"></i> Terms & Conditions</a></li>
+                        <li><a href="https://play.google.com/store/apps/dev?id=YOUR_DEV_ID" target="_blank" class="text-gray-400 hover:text-water-cyan transition duration-300 flex items-center"><i class="fab fa-google-play text-xs mr-2"></i> Google Play</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold text-white mb-6 border-l-4 border-water-green pl-3">Connect With Developer</h4>
+                    <div class="flex space-x-4 mb-6">
+                        <a href="#" class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center text-white hover:bg-water-blue hover:shadow-water-blue transition duration-300 transform hover:scale-110">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center text-white hover:bg-water-red hover:shadow-water-red transition duration-300 transform hover:scale-110">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center text-white hover:bg-water-cyan hover:shadow-glow-water transition duration-300 transform hover:scale-110">
+                            <i class="fab fa-discord"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center text-white hover:bg-water-purple hover:shadow-water-purple transition duration-300 transform hover:scale-110">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                    <p class="text-gray-400 text-sm flex items-center">
+                        <i class="fas fa-envelope text-water-blue mr-2"></i>
+                        nadeemgamer180@gmail.com
+                    </p>
+                    <p class="text-gray-400 text-sm flex items-center mt-2">
+                        <i class="fas fa-gamepad text-water-cyan mr-2"></i>
+                        Nadeem Gaming Studio
+                    </p>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-gray-800 text-center text-gray-500 text-sm">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="mb-4 md:mb-0">
+                        &copy; <span id="currentYear"></span> <span class="text-water-blue font-bold">Water Sort Color Puzzle Game</span>. All Rights Reserved.
+                    </div>
+                    <div>
+                        Developed with <i class="fas fa-heart text-water-pink mx-1 animate-pulse"></i> by Nadeem Gaming Studio
+                    </div>
+                </div>
+                <div class="mt-4 text-xs text-gray-600">
+                    Privacy Policy Date: <span class="text-water-blue font-bold">06 November 2025</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Initialize AOS (Animate On Scroll)
+        document.addEventListener('DOMContentLoaded', function() {
+            AOS.init({
+                duration: 1000,
+                once: false,
+                offset: 100
+            });
+            
+            // Set current year
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+            
+            // Scroll to Top Button
+            const scrollTopBtn = document.getElementById('scrollTopBtn');
+            
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    scrollTopBtn.classList.add('active');
+                } else {
+                    scrollTopBtn.classList.remove('active');
+                }
+            });
+            
+            scrollTopBtn.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // Smooth scrolling for table of contents links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Bubble Effect
+            const bubblesContainer = document.getElementById('bubbles');
+            const waterColors = ['#00A8FF', '#00D4FF', '#00BFA6', '#9D4EDD', '#34C759', '#FFC107', '#FF4757', '#FF9500'];
+            
+            for (let i = 0; i < 80; i++) {
+                const bubble = document.createElement('div');
+                bubble.className = 'bubble';
+                const size = Math.random() * 60 + 20;
+                bubble.style.width = size + 'px';
+                bubble.style.height = size + 'px';
+                bubble.style.background = `radial-gradient(circle at 30% 30%, ${waterColors[Math.floor(Math.random() * waterColors.length)]}40, transparent)`;
+                bubble.style.left = Math.random() * 100 + 'vw';
+                bubble.style.top = Math.random() * 100 + 'vh';
+                bubble.style.opacity = Math.random() * 0.4 + 0.1;
+                bubble.style.animationDelay = Math.random() * 5 + 's';
+                bubble.style.animationDuration = (Math.random() * 20 + 10) + 's';
+                
+                bubblesContainer.appendChild(bubble);
+            }
+            
+            // Water Droplet Effect
+            const dropletsContainer = document.getElementById('waterDroplets');
+            
+            for (let i = 0; i < 30; i++) {
+                const droplet = document.createElement('div');
+                droplet.className = 'droplet';
+                droplet.style.color = waterColors[Math.floor(Math.random() * waterColors.length)];
+                droplet.style.left = Math.random() * 100 + 'vw';
+                droplet.style.animationDuration = (Math.random() * 5 + 3) + 's';
+                droplet.style.animationDelay = Math.random() * 5 + 's';
+                droplet.style.opacity = Math.random() * 0.6 + 0.2;
+                
+                dropletsContainer.appendChild(droplet);
+            }
+            
+            // Typewriter Effect
+            const typewriterElement = document.querySelector('.typewriter');
+            if (typewriterElement) {
+                setTimeout(() => {
+                    typewriterElement.style.animation = 'none';
+                    setTimeout(() => {
+                        typewriterElement.style.borderRight = 'none';
+                    }, 500);
+                }, 4000);
+            }
+            
+            // Card hover effects enhancement
+            document.querySelectorAll('.policy-card').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-8px)';
+                    this.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.4)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                    this.style.boxShadow = '';
+                });
+            });
+            
+            // Animate gradient text
+            const gradientTexts = document.querySelectorAll('.bg-gradient-to-r');
+            gradientTexts.forEach(text => {
+                text.style.backgroundSize = '200% 200%';
+                text.style.animation = 'wave 8s ease infinite';
+            });
+            
+            // Water color animations
+            for (let i = 0; i < 10; i++) {
+                const colorElement = document.createElement('div');
+                colorElement.className = 'water-color';
+                colorElement.style = `--delay: ${i}; top: ${Math.random() * 80 + 10}%; left: ${Math.random() * 80 + 10}%; color: ${waterColors[i % waterColors.length]};`;
+                colorElement.innerHTML = '<div class="water-tube"><div class="water-level" style="height: ' + (Math.random() * 70 + 30) + '%;"></div></div>';
+                document.querySelector('main').appendChild(colorElement);
+            }
+            
+            // Important sections pulse
+            const importantSections = document.querySelectorAll('#information-collection, #children-privacy, #security');
+            importantSections.forEach(section => {
+                section.addEventListener('mouseenter', () => {
+                    section.style.animation = 'pulse 2s infinite';
+                });
+                section.addEventListener('mouseleave', () => {
+                    section.style.animation = '';
+                });
+            });
+            
+            // Water flow animation for section counters
+            document.querySelectorAll('.section-counter').forEach(counter => {
+                counter.addEventListener('mouseenter', function() {
+                    this.style.animation = 'waterFlow 3s infinite';
+                });
+                counter.addEventListener('mouseleave', function() {
+                    this.style.animation = '';
+                });
+            });
+            
+            // Create additional floating water tubes
+            for (let i = 0; i < 6; i++) {
+                const tube = document.createElement('div');
+                tube.className = 'water-color';
+                tube.style = `--delay: ${i * 0.5}; top: ${Math.random() * 70 + 15}%; left: ${Math.random() * 70 + 15}%; color: ${waterColors[i % waterColors.length]};`;
+                tube.innerHTML = '<div class="water-tube"><div class="water-level"></div></div>';
+                const waterLevel = tube.querySelector('.water-level');
+                waterLevel.style.height = (Math.random() * 70 + 30) + '%';
+                waterLevel.style.animationDuration = (Math.random() * 2 + 1) + 's';
+                document.querySelector('main').appendChild(tube);
+            }
+        });
+    </script>
+</body>
+</html>
